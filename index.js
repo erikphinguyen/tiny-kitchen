@@ -29,3 +29,5 @@ app.listen(port, callback); // 1st argument is a variable, 2nd is a fx
 // can use
 // curl -X GET 'http://localhost:${port}'
 // to see if server is running without using browser
+// curl -X POST -H 'Content-Type: application/json' 'http://localhost:5001/api/orders/' -d '{"items": "Pizza with Pineapple and Ham", "name": "Mark", "address":"Attiyas House"}'
+

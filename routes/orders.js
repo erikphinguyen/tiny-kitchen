@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
     newOrder.save()
         .then(order => res.json(order.items))
         // if successful, return only the items of said order (helps exclude timestamp)
-        .ctach(err => res.status(422).json(err)) // 422 unprocessable
+        .catch(err => res.status(422).json(err)) // 422 unprocessable
 });
 
 router.patch('/', (req, res) => {
