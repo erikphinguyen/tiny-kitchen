@@ -1,6 +1,12 @@
 import express from "express";  // express is the variable from the "express" package; is bananable
 // if our package.json does not use "type": "module", line 1 would be const express = require('express')
+import mongoose from "mongoose";
+import { orders } from "./routes/orders.js";
+import { MONGO_URI } from "./config/keys.js";
+
 const app = express();  // sets app to express fx; app is an object (console.log() to prove it)
+
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.json()) // formats all responses in json
 
@@ -15,6 +21,7 @@ app.get('/test', (req, res) => res.send('Hello World')); // can use this route t
 //     res.send(`${multiplyByTwo()}`)
 // });
 
+app.use("/api/orders", orders)
 
 const port = process.env.PORT || 5001; // "opens the door to kitchen"; NOT a connection, just a way in
 const callback = () => console.log(`Server is running on port ${port}`);
